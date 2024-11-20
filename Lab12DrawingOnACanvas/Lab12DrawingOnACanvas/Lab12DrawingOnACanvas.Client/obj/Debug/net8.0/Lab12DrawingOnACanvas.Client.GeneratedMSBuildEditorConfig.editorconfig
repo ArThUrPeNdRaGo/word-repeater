@@ -1,0 +1,35 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = Lab12DrawingOnACanvas.Client
+build_property.RootNamespace = Lab12DrawingOnACanvas.Client
+build_property.ProjectDir = C:\Users\Arthur Mo\source\repos\word-repeater\Lab12DrawingOnACanvas\Lab12DrawingOnACanvas\Lab12DrawingOnACanvas.Client\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Arthur Mo\source\repos\word-repeater\Lab12DrawingOnACanvas\Lab12DrawingOnACanvas\Lab12DrawingOnACanvas.Client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Arthur Mo/source/repos/word-repeater/Lab12DrawingOnACanvas/Lab12DrawingOnACanvas/Lab12DrawingOnACanvas.Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Arthur Mo/source/repos/word-repeater/Lab12DrawingOnACanvas/Lab12DrawingOnACanvas/Lab12DrawingOnACanvas.Client/Pages/NetworkedDrawing.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV0d29ya2VkRHJhd2luZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ffu4mgipuv
+
+[C:/Users/Arthur Mo/source/repos/word-repeater/Lab12DrawingOnACanvas/Lab12DrawingOnACanvas/Lab12DrawingOnACanvas.Client/Pages/SampleDrawing.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FtcGxlRHJhd2luZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-lleklrw3ug

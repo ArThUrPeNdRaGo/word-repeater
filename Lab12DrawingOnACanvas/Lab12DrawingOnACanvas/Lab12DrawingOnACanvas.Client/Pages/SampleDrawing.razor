@@ -1,0 +1,266 @@
+﻿@page "/canvas"
+@* 
+    The following line forces the code to run on the web server.
+
+    Notice that we run this code on the web server so that
+    it has access to the network. If you run this as web assembly
+    (i.e., on the browser) it would not be able to connect to
+    the snake server using our networking code.
+*@
+@rendermode InteractiveServer
+
+@*
+    Here he get access to the JavaScript running on the Browser.
+*@
+@inject IJSRuntime JsRuntime
+
+@*
+    Here is the injected logger.
+*@
+@inject ILogger<Program> Logger
+
+@*
+    This is how we know when the users clicks on a different nav link (on the side bar)
+*@
+
+@implements IDisposable
+
+@using Blazor.Extensions
+@using Blazor.Extensions.Canvas
+@using Blazor.Extensions.Canvas.Canvas2D
+@using System.Drawing
+@using System.Diagnostics
+@using CS3500.LogSupport
+
+<PageTitle>Canvas Example</PageTitle>
+
+<h1>Lab 12 Example</h1>
+<p> Drawing on a Canvas </p>
+
+<button class="btn btn-primary" @onclick="NewData">New Data Arrived</button>
+
+<div id="myCanvas">
+    <BECanvas Width="500" Height="500" @ref="canvasReference"/>
+</div>
+
+<div id="checkboxes">
+    <div class="form-check form-switch">
+        <input class="form-check-input" id="moveCheckbox" type="checkbox" @onchange="ToggleRedrawOnNewData" />
+        <label class="form-check-label" for="moveCheckbox"> Redraw on New Data </label>
+    </div>
+
+    <div class="form-check form-switch">
+        <input class="form-check-input" id="continuousCheckbox" type="checkbox" @onchange="ToggleAnimate" />
+        <label class="form-check-label" for="continuousCheckbox"> Animate </label>
+    </div>
+</div>
+
+<img @ref="teaPot" id="teapot" src="images/teapot.gif" alt="image" style="display:block;" />
+
+@code 
+{
+    // Drawing/Canvas variables here.
+    private BECanvasComponent   canvasReference = null!;
+    private Canvas2DContext     context = null!;
+    private ElementReference    teaPot;
+    private int teaPotRotation = 0;
+    private bool showHowToDrawImage = false;
+
+    // GUI Model here:
+    private int GUIWidth = 800, GUIHeight = 800;
+    private DateTime startTime = DateTime.Now;
+    private int frameNumber = -1; // haven't started yet.
+
+    // WORLD Model here:
+    private Rectangle worldModel = new (50, 50, 150, 25);
+
+    // Controller Model here:
+    public bool _moveOnDraw = false;
+    private IJSObjectReference _jsModule = null!;
+
+    /// <summary>
+    ///   First step in the Blazor Page Life Cycle.  In some circumstances
+    ///   you would load data here.  We do not need to.
+    /// </summary>
+    protected override void OnInitialized( )
+    {
+        Logger.LogDetailsBrief( LogLevel.Debug, "OnInitialized" );
+    }
+
+    /// <summary>
+    ///   Every time some event (e.g., StateHasChanged) happens that requires
+    ///   the GUI to be updated, this method is called.  In our case, we only
+    ///   use the first time to load our JavaScript, create our drawing context,
+    ///   and Drawing a "Dummy" first frame.
+    /// </summary>
+    /// <param name="firstRender"></param>
+    /// <returns></returns>
+    protected override async Task OnAfterRenderAsync( bool firstRender )
+    {
+        if ( firstRender )
+        {
+            _jsModule = await JsRuntime.InvokeAsync<IJSObjectReference>( "import", "./Pages/SampleDrawing.razor.js" );
+
+            await _jsModule.InvokeVoidAsync( "initJS", DotNetObjectReference.Create( this ) );
+            // We draw using the context object.
+            context = await canvasReference.CreateCanvas2DAsync();
+
+            // The Draw method "draws the world" on the screen.
+            // This is done once to show the user where the canvas is.
+            Draw();  
+        }
+    }
+
+    /// <summary>
+    ///   Draw the world
+    /// </summary>
+    /// <param name="timeStamp">
+    ///   This value comes from JavaScript and informs you how many milliseconds have
+    ///   elapsed sense the web page was loaded.  If it is 0, then the Draw method call
+    ///   has come from C#.
+    /// </param>
+    [JSInvokable]
+    public async void Draw( double timeStamp = 0 )
+    {
+        frameNumber++;
+
+        double fps = frameNumber / (double)(DateTime.Now - startTime).TotalSeconds;
+
+        int timeInSeconds;
+
+        if (timeStamp == 0)
+        {
+            timeInSeconds = (int) (DateTime.Now - startTime).TotalSeconds;
+        }
+        else
+        {
+            timeInSeconds = (int) (timeStamp / 1000);
+        }
+
+        if ( _moveOnDraw )
+        {
+            worldModel.X += 5;
+            if (worldModel.X > GUIWidth)
+            {
+                worldModel.X = -worldModel.Width;
+                worldModel.Y += worldModel.Height;
+            }
+
+            teaPotRotation = (teaPotRotation + 1) % 360;
+        }
+
+        try
+        {
+            // Group all the draw commands into one large single draw.
+            await context.BeginBatchAsync();
+
+            // Draw Background.
+            await context.SetFillStyleAsync( "darkblue" );
+            await context.FillRectAsync( 0, 0, GUIWidth, GUIHeight );
+
+            await context.SetFontAsync("30px Arial");
+            await context.SetFillStyleAsync("white");
+            await context.FillTextAsync( $"Frame: {frameNumber}", 10, 30 );
+            await context.FillTextAsync( $"FPS: {fps:F1}", 200, 30 );
+            await context.FillTextAsync( $"Elapsed: {timeInSeconds:F1}", 400, 30 );
+
+            // Draw floating rectangle
+            await context.SetFillStyleAsync( "lightblue" );
+            await context.FillRectAsync( worldModel.X, worldModel.Y, worldModel.Width, worldModel.Height );
+
+            // Draw an Image (and Animate it)
+            //            await context.SaveAsync(); // rotation is only for image.
+            //            await context.TranslateAsync( 300, 300 );
+            //            await context.RotateAsync( (float) (TeaPotRotation * Math.PI / 180.0 ) );
+            //            await context.DrawImageAsync( TeaPot, -25, -15, 50, 30 );
+            //            await context.RestoreAsync();
+            if (showHowToDrawImage)
+            {
+                await context.DrawImageAsync(teaPot, 50, 350, 100, 60);
+            }
+
+            await context.EndBatchAsync();
+
+        }
+        catch ( Exception e )
+        {
+            Debug.WriteLine( $"Error in code: {e}" );
+        }
+    }
+
+    /// <summary>
+    ///   Simulate new data arriving, e.g., from the network.
+    /// </summary>
+    private void NewData()
+    {
+        Draw();
+    }
+
+    /// <summary>
+    ///   Handle the Redraw on New Data toggle switch.
+    /// </summary>
+    /// <param name="e"> If the switch is on, we start the timer over. </param>
+    private void ToggleRedrawOnNewData( ChangeEventArgs e )
+    {
+        if (e.Value is bool redraw)
+        {
+            if (redraw)
+            {
+                startTime = DateTime.Now;
+                frameNumber = 0;
+            }
+            _moveOnDraw = redraw;
+        }
+    }
+
+    /// <summary>
+    ///   Handle the Animate toggle switch.  If toggled on
+    ///   then we reset the "simulation".
+    /// </summary>
+    /// <param name="e"> Tells us if the switch is on or off. </param>
+    private void ToggleAnimate( ChangeEventArgs e )
+    {
+        _jsModule.InvokeVoidAsync( "ToggleAnimation", e.Value );
+
+        if ( e.Value is bool on && on )
+        {
+            worldModel.X = 10;
+            worldModel.Y = 50;
+
+            startTime = DateTime.Now;
+            frameNumber = 0;
+        }
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     This method is called from the JavaScript side of the
+    ///     browser.
+    ///   </para>
+    ///   <remarks>
+    ///      Must be PUBLIC for JavaScript to call!
+    ///   </remarks>
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    [JSInvokable]
+    public void ResizeInBlazor( int width, int height )
+    {
+        Debug.WriteLine( $"Resizing the web page. {width} {height}");
+        GUIWidth = Math.Min(Math.Max(100, width),1000);
+        GUIHeight = Math.Min(Math.Max(100, height),1000);
+    }
+
+    /// <summary>
+    ///   Called by the system when the page is navigated away from.
+    ///   Note: sometimes the debugger will create a "dummy" page when
+    ///   first navigated to, then dispose it, then create the actual page.
+    ///   You can ignore this behavior.
+    /// </summary>
+    public void Dispose()
+    {
+        _jsModule.InvokeVoidAsync( "ToggleAnimation", false );
+        Logger.LogDetailsBrief( LogLevel.Debug, "Disposing of page" );
+    }
+
+}

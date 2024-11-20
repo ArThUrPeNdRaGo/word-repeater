@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogSupport</name>
+    </assembly>
+    <members>
+        <member name="T:CS3500Logger.CustomFileLogger">
+            <summary>
+              <list type="bullet">
+                <item>Author: H. James de St. Germain</item>
+                <item>Date: Spring 2022</item>
+                <item>Updated: Spring 2023</item>
+                <item>Copyright: Students are not allowed to use this code.</item>   
+              </list>
+              <para>
+                 Log messages to a file.  See Custom Options.
+              </para>
+            </summary>
+        </member>
+        <member name="M:CS3500Logger.CustomFileLogger.#ctor(System.String,CS3500Logger.JimLoggerOptions)">
+            <summary>
+              <para>
+                Important:  This on MAUI saves to 
+                /Users/germain/AppData/Local/Packages/09d81446-42c2-460b-a8f5-e3f9c667be49_9zz4h110yvjzm/LocalCache/Roaming
+              </para>
+            </summary>
+            <param name="categoryName"></param>
+        </member>
+        <member name="T:CS3500Logger.FileLoggerProvider">
+            <summary>
+              Author: H. James de St. Germain
+              Date:   Spring 2023
+              Updated: Spring 2024
+              <para>
+                Example solution for the file logger provider
+              </para>
+            </summary>
+        </member>
+        <member name="M:CS3500Logger.FileLoggerProvider.Dispose">
+            <summary>
+             Not used
+            </summary>
+        </member>
+        <member name="T:CS3500Logger.CustomJimLoggerProvider">
+            <summary>
+              <list type="bullet">
+                <item>Author: H. James de St. Germain</item>
+                <item>Date: Spring 2023</item>
+                <item>Copyright: Students are not allowed to use this code.</item>   
+              </list>
+              <para>
+                This code is used to instantiate our custom file logger.  It is mostly
+                boiler plate.
+              </para>
+            </summary>
+        </member>
+        <member name="T:CS3500Logger.JimLoggerOptions">
+            <summary>
+              <list type="bullet">
+                <item>Author: H. James de St. Germain</item>
+                <item>Date: Spring 2023</item>
+                <item>Copyright: Students are not allowed to use this code.</item>   
+              </list>
+              <para>
+                Available options for use with the Custom Logger
+              </para>
+            </summary>
+        </member>
+        <member name="P:CS3500Logger.JimLoggerOptions.ShowDebugLevel">
+            <summary>
+              Show [debug] or [info] (etc) at start of log line
+            </summary>
+        </member>
+        <member name="P:CS3500Logger.JimLoggerOptions.ShowThread">
+            <summary>
+              Show (thread id) in log info
+            </summary>
+        </member>
+        <member name="P:CS3500Logger.JimLoggerOptions.ShowTime">
+            <summary>
+              Show the time/date that the log message occurred
+            </summary>
+        </member>
+        <member name="P:CS3500Logger.JimLoggerOptions.ShowShortTime">
+            <summary>
+              Show a truncated time with only minutes, seconds, microseconds.
+              Mostly used for debugging.  Note: ShowTime trumps ShowShortTime
+            </summary>
+        </member>
+        <member name="P:CS3500Logger.JimLoggerOptions.ShowMethod">
+            <summary>
+              Try to determine and show the method that the log was called from
+            </summary>
+        </member>
+        <member name="P:CS3500Logger.JimLoggerOptions.MethodNameLength">
+            <summary>
+              Truncate (or expand) method names to this length to allow output to more easily be read.
+            </summary>
+        </member>
+        <member name="P:CS3500Logger.JimLoggerOptions.WriteToConsole">
+            <summary>
+              Normal usage is for debugging, but if you want to write to the console as well, enable this option.
+            </summary>
+        </member>
+        <member name="T:CS3500Logger.JimsThreadLevelMethodLogger">
+            <summary>
+              <para>
+                Author:     H. James de St. Germain
+                Date:       Spring 2023
+                Updated:    Spring 2024
+                Copyright:  Students are not allowed to copy this code.
+              </para>
+              <para>
+                This logger overloads the logDebug (etc) method to show much more information
+                about the message, including:
+              </para>
+              <list type="bullet">
+                <item> The current Thread being run on. </item>
+                <item> The Date/Time </item>
+                <item> Debug Level</item>
+                <item> The method being executed</item>
+              </list>
+              <para>
+                Further all of these can be toggled on/off through the use of the logger option
+                configuration. 
+              </para>
+            </summary>
+        </member>
+        <member name="F:CS3500Logger.JimsThreadLevelMethodLogger.QueuedOutput">
+            <summary>
+              <para>
+                Hold any queued up messages to the console that are a result of the console being blocked/frozen.
+              </para>
+              <para>
+                When writing to the console, if blocked, then queue up output rather
+                than wait/block.
+              </para>
+            </summary>
+        </member>
+        <member name="M:CS3500Logger.JimsThreadLevelMethodLogger.#ctor(System.String,CS3500Logger.JimLoggerOptions)">
+            <summary>
+              Build a Jim Logger
+            </summary>
+            <param name="categoryName"> FIXME: not currently used</param>
+            <param name="config"> can toggle what is reported.  See the LoggerOptions object.</param>
+        </member>
+    </members>
+</doc>

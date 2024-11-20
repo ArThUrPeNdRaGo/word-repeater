@@ -1,0 +1,62 @@
+/* /Pages/NetworkedDrawing.razor.rz.scp.css */
+#myCanvas[b-ffu4mgipuv]
+{
+    padding-top: 20px;
+}
+
+.form-check-input:checked[b-ffu4mgipuv]
+{
+    background-color: #28a745; /* Green color when checked */
+    border-color: #28a745;
+}
+
+#checkboxes[b-ffu4mgipuv]
+{
+    margin-left:200px;
+    margin-top: 50px;
+    width:500px;
+    transform-origin: center;
+    transform: scale(1.5);
+}
+
+.form-check-input[b-ffu4mgipuv]
+{
+    background-color: lightgray;
+    border-color: black;
+}
+
+.form-check-label[b-ffu4mgipuv]
+{
+    margin-left: 50px;
+}
+/* /Pages/SampleDrawing.razor.rz.scp.css */
+#myCanvas[b-lleklrw3ug]
+{
+    padding-top: 20px;
+}
+
+.form-check-input:checked[b-lleklrw3ug]
+{
+    background-color: #28a745; /* Green color when checked */
+    border-color: #28a745;
+}
+
+#checkboxes[b-lleklrw3ug]
+{
+    margin-left:200px;
+    margin-top: 50px;
+    width:500px;
+    transform-origin: center;
+    transform: scale(1.5);
+}
+
+.form-check-input[b-lleklrw3ug]
+{
+    background-color: lightgray;
+    border-color: black;
+}
+
+.form-check-label[b-lleklrw3ug]
+{
+    margin-left: 50px;
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Networking</name>
+    </assembly>
+    <members>
+        <member name="T:CS3500.Networking.NetworkConnection">
+            <summary>
+              Wraps the StreamReader/writer/TcpClient together so we
+              don't have to keep creating all three for network actions.
+            </summary>
+        </member>
+        <member name="M:CS3500.Networking.NetworkConnection.#ctor(Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+              Initializes a new instance of the <see cref="T:CS3500.Networking.NetworkConnection"/> class.
+              <para>
+                Create a network connection object.  The tcpClient will be unconnected at the start.
+              </para>
+            </summary>
+            <param name="logger"> Logging Interface. </param>
+        </member>
+        <member name="P:CS3500.Networking.NetworkConnection.IsConnected">
+            <summary>
+            Gets a value indicating whether the socket is connected.
+            </summary>
+        </member>
+        <member name="M:CS3500.Networking.NetworkConnection.Connect(System.String,System.Int32)">
+            <summary>
+              Try to connect to the given host:port. 
+            </summary>
+            <param name="host"> The URL or IP address, e.g., www.cs.utah.edu, or  123.201.51.5. </param>
+            <param name="port"> The port, e.g., 11000. </param>
+        </member>
+        <member name="M:CS3500.Networking.NetworkConnection.Send(System.String)">
+            <summary>
+              Send a message to the remote server.  If the <paramref name="message"/> contains
+              new lines, these will be treated on the receiving side as multiple messages.
+              A new line will be attached to the end of the <paramref name="message"/>
+              so the <see cref="M:CS3500.Networking.NetworkConnection.ReadLine"/> will know the end of the message. Your <paramref name="message"/>
+              should normally not contain an ending newline.
+            </summary>
+            <param name="message"> Your string of characters to send. </param>
+        </member>
+        <member name="M:CS3500.Networking.NetworkConnection.ReadLine">
+            <summary>
+              Read a message from the other side of the socket.  The message will contain
+              all characters up to the first new line. See <see cref="M:CS3500.Networking.NetworkConnection.Send(System.String)"/>.
+            </summary>
+            <returns> The contents of the message. </returns>
+        </member>
+        <member name="M:CS3500.Networking.NetworkConnection.Disconnect">
+            <summary>
+              If connected, disconnect and clean up.
+            </summary>
+        </member>
+        <member name="M:CS3500.Networking.NetworkConnection.Dispose">
+            <summary>
+              Automatically called with using statement.
+            </summary>
+        </member>
+    </members>
+</doc>

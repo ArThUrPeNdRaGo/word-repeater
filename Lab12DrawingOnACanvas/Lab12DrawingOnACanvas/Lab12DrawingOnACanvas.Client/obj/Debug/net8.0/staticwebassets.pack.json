@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas.Client\\Pages\\NetworkedDrawing.razor.js",
+      "PackagePath": "staticwebassets\\Pages\\NetworkedDrawing.razor.js"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas.Client\\Pages\\SampleDrawing.razor.js",
+      "PackagePath": "staticwebassets\\Pages\\SampleDrawing.razor.js"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas.Client\\obj\\Debug\\net8.0\\compressed\\smb7c5l07d.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas.Client\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Lab12DrawingOnACanvas.Client.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Lab12DrawingOnACanvas.Client.bundle.scp.css"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas.Client\\wwwroot\\appsettings.Development.json",
+      "PackagePath": "staticwebassets\\appsettings.Development.json"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas.Client\\wwwroot\\appsettings.json",
+      "PackagePath": "staticwebassets\\appsettings.json"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas.Client\\wwwroot\\images\\teapot.gif",
+      "PackagePath": "staticwebassets\\images\\teapot.gif"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Lab12DrawingOnACanvas.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Lab12DrawingOnACanvas.Client.props",
+      "PackagePath": "build\\Lab12DrawingOnACanvas.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Lab12DrawingOnACanvas.Client.props",
+      "PackagePath": "buildMultiTargeting\\Lab12DrawingOnACanvas.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Lab12DrawingOnACanvas.Client.props",
+      "PackagePath": "buildTransitive\\Lab12DrawingOnACanvas.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

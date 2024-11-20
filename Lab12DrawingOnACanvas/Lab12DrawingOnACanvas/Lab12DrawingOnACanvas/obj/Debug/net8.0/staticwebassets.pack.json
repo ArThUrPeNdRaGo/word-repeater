@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Lab12DrawingOnACanvas.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Lab12DrawingOnACanvas.bundle.scp.css"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "E:\\CS3500\\A9\\lab12\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\Lab12DrawingOnACanvas\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Lab12DrawingOnACanvas.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Lab12DrawingOnACanvas.props",
+      "PackagePath": "build\\Lab12DrawingOnACanvas.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Lab12DrawingOnACanvas.props",
+      "PackagePath": "buildMultiTargeting\\Lab12DrawingOnACanvas.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Lab12DrawingOnACanvas.props",
+      "PackagePath": "buildTransitive\\Lab12DrawingOnACanvas.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
